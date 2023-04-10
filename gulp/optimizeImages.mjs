@@ -12,11 +12,11 @@ const sprite = () =>
       .src('source/img/sprite/*.svg')
       .pipe(svgstore({inlineSvg: true}))
       .pipe(rename('sprite.svg'))
-      .pipe(gulp.dest('docs/img'));
+      .pipe(gulp.dest('build/img'));
 
 const optimizeSvg = () =>
   gulp
-      .src('docs/img/**/*.svg')
+      .src('build/img/**/*.svg')
       .pipe(
           imagemin([
             svgo({
@@ -34,17 +34,17 @@ const optimizeSvg = () =>
                   active: false,
                 }],
             })]))
-      .pipe(gulp.dest('docs/img'));
+      .pipe(gulp.dest('build/img'));
 
 const optimizeJpg = () =>
   gulp
-      .src('docs/img/**/*.{jpg,jpeg}')
+      .src('build/img/**/*.{jpg,jpeg}')
       .pipe(imagemin([mozJpeg({quality: 90, progressive: true})]))
-      .pipe(gulp.dest('docs/img'));
+      .pipe(gulp.dest('build/img'));
 
 const optimizePng = () =>
   gulp
-      .src('docs/img/**/*.png')
+      .src('build/img/**/*.png')
       .pipe(
           imagemin([
             pngQuant({
@@ -53,7 +53,7 @@ const optimizePng = () =>
               dithering: 1,
               quality: [0.8, 0.9],
             })]))
-      .pipe(gulp.dest('docs/img'));
+      .pipe(gulp.dest('build/img'));
 
 /*
   Optional tasks
